@@ -1,10 +1,37 @@
 .App {
   text-align: center;
+  position: relative;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.declare {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 30px;
+  background-color: rgba(33, 33, 33, .7);
+  color: #fff;
+  padding: 30px 20px;
+  text-align: left;
+  z-index: 99;
+  .stick {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+  }
+}
+.declare-stick {
+  width: 20px;
+  left: 0;
+  right: inherit;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -35,4 +62,12 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+// others
+code {
+  background-color: #ccc;
+  border-radius: 4px;
+  color: #0c909c;
+  padding: 0 4px;
 }
