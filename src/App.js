@@ -3,11 +3,23 @@ import './App.scss';
 import Menu from './components/Menu/menu.js'
 import Router from './routers/index'
 import { useState } from 'React'
+import { Link, HashRouter } from 'react-router-dom'
 
 function Declare () {
   const [stick, setStick] = useState(true)
+  const routers = [
+    { url: 'router-usage', txt: 'Router路由使用'},
+    { url: 'hooks', txt: 'Hooks使用'},
+  ]
+  const changeHash = (url) => {
+    console.log(url)
+    if (window.location.hash !== url) {
+      window.location.hash = '#/' + url
+      setStick(true)
+    }
+  }
   return (<div className={['declare', stick ? 'declare-stick' : ''].join(' ')}>
-    <div className={'stick'} onClick={() => { setStick(!stick) }}></div>
+    <div className={['stick', stick ? 'stick-opacity' : null].join(' ')} onClick={() => { setStick(!stick) }} />
     <div>
       这是一个React“大杂烩”，包含了很多React的基本使用、高级使用、相关技术、相关丁配置等，点击下面的菜单查看相关的，
       你想要看查看的内容
@@ -20,9 +32,16 @@ function Declare () {
         <li>xx</li>
       </ul>
       <h3>高级</h3>
-      <ul>
-        <li attr={'router-usage'}>Router路由使用</li>
-      </ul>
+      <HashRouter>
+        <ul>
+          {
+            routers.map(o => (
+              <li key={o.url} onClick={changeHash.bind(this, o.url)}>{o.txt}</li>
+            ))
+          }
+        </ul>
+      </HashRouter>
+
     </div>
 
   </div>)
@@ -32,7 +51,9 @@ function App() {
   return (
     <div className="App">
 
-      <Router/>
+      <div className={'App-router-container'}>
+        <Router/>
+      </div>
 
       <Declare/>
 

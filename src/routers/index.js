@@ -5,7 +5,7 @@ import RouterComp from "@views/RouterUsage/RouterComp";
 
 const withRouterComp = withRouter(RouterComp)
 
-const array = [
+const arrayRouter = [
   {
     path: 'router-usage',
     name: 'routerUsage',
@@ -32,6 +32,34 @@ const array = [
     comp: loadable(() => import(/*webpackChunkName: "routerComp4"*/'@views/RouterUsage/RouterComp5'))
   },
 ]
+
+const arrayHook = [
+  {
+    path: 'hook-use-callback',
+    name: 'useCallback',
+    comp: loadable(() => import(/*webpackChunkName: "useCallback"*/'@views/Hooks/HkUseCallback'))
+  },
+  {
+    path: 'hooks',
+    name: 'hooks',
+    comp: loadable(() => import(/*webpackChunkName: "hooks"*/'@views/Hooks/Hooks'))
+  },
+]
+
+const arrayTest = [
+  {
+    path: 'test1',
+    name: 'test1',
+    comp: loadable(() => import(/*webpackChunkName: "test"*/'@views/Test/Test1'))
+  },
+  {
+    path: 'test2',
+    name: 'test2',
+    comp: loadable(() => import(/*webpackChunkName: "test2"*/'@views/Test/Test2'))
+  },
+]
+
+const array = [].concat(arrayRouter).concat(arrayHook).concat(arrayTest)
 
 // export {
 //   array as Routers

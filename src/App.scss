@@ -2,6 +2,10 @@
   text-align: center;
   position: relative;
 }
+.App-router-container {
+  padding: 10px 40px;
+  text-align: left;
+}
 
 .App-logo {
   height: 40vmin;
@@ -27,11 +31,19 @@
     height: 30px;
     background-color: #fff;
   }
+  .stick-opacity {
+    right: -32px;
+    background-color: #333;
+    box-shadow: 2px 2px 6px 1px #7b7b7b;
+    opacity: .5;
+  }
 }
 .declare-stick {
-  width: 20px;
+  width: 0;
+  padding: 0;
   left: 0;
   right: inherit;
+  color: transparent;
 }
 
 @media (prefers-reduced-motion: no-preference) {

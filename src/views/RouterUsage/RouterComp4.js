@@ -15,7 +15,10 @@ export default class RouterComp4 extends React.Component {
       <div>
         <li>使用<code>:param + props.match</code>{match.params.name}</li>
         <li>使用<code>query + location.search</code>{location.search}</li>
-        <li>使用<code>Link + to(object)取值（比较重要，请详见代码）</code>{location.state.name}: {location.state.sex}: {location.state.age}</li>
+        {
+          location.state ?
+            (<li>使用<code>Link + to(object)取值（比较重要，请详见代码）</code>{location.state.name}: {location.state.sex}: {location.state.age}</li>) : null
+        }
       </div>
 
     </div>)
