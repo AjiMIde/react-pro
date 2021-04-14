@@ -7,11 +7,6 @@ const withRouterComp = withRouter(RouterComp)
 
 const arrayRouter = [
   {
-    path: 'router-usage',
-    name: 'routerUsage',
-    comp: loadable(() => import(/*webpackChunkName: "routerUsage"*/'@views/RouterUsage/RouterUsage'))
-  },
-  {
     path: 'router-comp2',
     name: 'routerComp2',
     comp: loadable(() => import(/*webpackChunkName: "routerComp2"*/'@views/RouterUsage/RouterComp2'))
@@ -33,33 +28,71 @@ const arrayRouter = [
   },
 ]
 
-const arrayHook = [
+const Basic = [
   {
-    path: 'hook-use-callback',
-    name: 'useCallback',
-    comp: loadable(() => import(/*webpackChunkName: "useCallback"*/'@views/Hooks/HkUseCallback'))
+    path: '/',
+    txt: '首页',
+    comp: loadable(() => import(/*webpackChunkName: "readme"*/'@views/readme'))
+  }
+]
+
+const Advanced = [
+  {
+    path: 'router-usage',
+    txt: 'Router',
+    name: 'routerUsage',
+    comp: loadable(() => import(/*webpackChunkName: "routerUsage"*/'@views/RouterUsage/RouterUsage'))
   },
   {
     path: 'hooks',
     name: 'hooks',
+    txt: 'Hooks',
     comp: loadable(() => import(/*webpackChunkName: "hooks"*/'@views/Hooks/Hooks'))
+  },
+  {
+    path: 'comp-desc',
+    name: 'compDesc',
+    txt: '组件定义',
+    comp: loadable(() => import(/*webpackChunkName: "compDesc"*/'@views/ComponentDesc/TheClass'))
+  },
+  {
+    path: 'react-lazy',
+    txt: 'react-lazy',
+    comp: loadable(() => import(/*webpackChunkName: "reactLazy"*/'@views/ComponentDesc/ReactLazy/father'))
+  },
+
+]
+
+const Example = [
+  {
+    path: 'react-dnd-ex',
+    txt: 'react dnd',
+    comp: loadable(() => import(/*webpackChunkName: "react-dnd"*/'@views/ReactDnd/Dnd.js'))
   },
 ]
 
-const arrayTest = [
+const Test = [
   {
     path: 'test1',
+    txt: 'test1',
     name: 'test1',
     comp: loadable(() => import(/*webpackChunkName: "test"*/'@views/Test/Test1'))
   },
   {
     path: 'test2',
+    txt: 'test2',
     name: 'test2',
     comp: loadable(() => import(/*webpackChunkName: "test2"*/'@views/Test/Test2'))
   },
+  {
+    path: 'test3',
+    txt: 'test3',
+    name: 'test3',
+    comp: loadable(() => import(/*webpackChunkName: "test3"*/'@views/Test/Test3'))
+  }
 ]
 
-const array = [].concat(arrayRouter).concat(arrayHook).concat(arrayTest)
+const array = [].concat(Basic).concat(Advanced).concat(Test).concat(arrayRouter).concat(Example)
 
 // export {
 //   array as Routers
@@ -84,9 +117,14 @@ export default function R () {
         {/*<Route path={'/router-comp'} render={(props)=><RouterComp {...props}/> } />*/}
         {/*使用withRouter包裹组件，也可以在组件props中得到相关的history等信息*/}
         {/*<Route path={'/router-comp'} component={withRouterComp}/>*/}
-
-
       </Switch>
     </RouterH>
   )
+}
+
+export {
+  Basic,
+  Advanced,
+  Test,
+  Example
 }

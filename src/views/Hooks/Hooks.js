@@ -1,6 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+// import HkUseMemo from "@views/Hooks/HkUseMemo2";
+import HkUseMemo from "@views/Hooks/HkUseMemo";
+import HkUseCallback from '@views/Hooks/HkUseCallback'
+
 export default class Hooks extends React.Component {
   componentDidMount () {
     console.log(this.props)
@@ -8,8 +12,9 @@ export default class Hooks extends React.Component {
 
   render() {
     return (<div className={'hooks'}>
-      <li>useCallback能够减少对 父子之间传递事件、参数后，影响到的沉浸，它是一个缓存，只有对比到值变化的时候才进行渲染</li>
-      <Link to={'/hook-use-callback'}>useCallback</Link>
+      <HkUseMemo/>
+
+      <HkUseCallback/>
     </div>)
   }
 }

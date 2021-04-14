@@ -1,0 +1,57 @@
+@import "../../../node_modules/bee-mui/styles/bee.reset";
+@import "../../../node_modules/bee-mui/styles/bee.tool";
+@import "../../../node_modules/bee-mui/styles/bee.markdown";
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body, #root, .App {
+  height: 100%;
+  line-height: 1.6!important;
+}
+.markdown-body {
+  line-height: 1.8 !important;
+}
+.App {
+  text-align: center;
+  position: relative;
+  display: flex;
+  .app-left {
+    width: 200px;
+  }
+  .app-center {
+    flex: 1;
+  }
+}
+.App-router-container {
+  padding: 10px 40px;
+  text-align: left;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+// others
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  background-color: #ccc;
+  border-radius: 4px;
+  color: #0c909c;
+  padding: 0 4px;
+}
+
+.hook-exp, .exp-block {
+  border: 1px dotted #999;
+  padding: 10px;
+  margin: 10px;
+}
+
+

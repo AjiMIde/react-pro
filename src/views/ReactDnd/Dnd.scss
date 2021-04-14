@@ -1,0 +1,113 @@
+.kitchen, .desk {
+  width: 200px;
+  border-radius: 10px;
+  border: 1px #999 solid;
+  padding: 10px;
+  .bench, .desk-item {
+    padding: 10px;
+    border: 1px #aaa dashed;
+    min-height: 200px;
+  }
+
+  .bench {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: baseline;
+    position: relative;
+    margin-bottom: 20px;
+    .bench-desc {
+      transform: scale(.7);
+      transform-origin: top left;
+      font-size: 12px;
+      background-color: #ccc;
+      top: 0;
+      left: 0;
+      position: absolute;
+    }
+  }
+
+  .desk-item {
+    position: relative;
+    .snack {
+      position: absolute;
+    }
+
+    &.over {
+      border-color: red;
+    }
+  }
+
+  .snack {
+    width: 46%;
+    align-self: baseline;
+    text-align: center;
+    border: 1px #ccc dotted;
+    border-radius: 5px;
+    margin-top: 6px;
+    &.dragging {
+      opacity: .5;
+    }
+  }
+}
+
+.eg1, .eg2, .eg3 {
+  box-sizing: border-box;
+  * {
+    box-sizing: border-box;
+  }
+  display: flex;
+  > div {
+    margin-right: 30px;
+  }
+}
+
+.eg2, .eg3 {
+  .bench {
+    min-height: auto;
+  }
+  .desk-item {
+    height: 100px;
+    min-height: 100px;
+  }
+}
+
+.eg3 {
+  .desk-item {
+    resize: both;
+  }
+  .bench, .room {
+    .desk {
+      width: 46%;
+      align-self: baseline;
+      text-align: center;
+      border: 1px #ccc dotted;
+      border-radius: 5px;
+      padding: 0;
+    }
+  }
+  .room {
+    position: relative;
+    padding: 10px;
+    border: 1px #aaa dashed;
+    resize: vertical;
+    overflow: hidden;
+    .desk {
+      resize: both;
+      overflow: hidden;
+      .snack {
+        margin: 0!important;
+      }
+
+    }
+    .room-desc {
+      transform: scale(.7);
+      transform-origin: top left;
+      font-size: 12px;
+      background-color: #ccc;
+      top: 0;
+      left: 0;
+      position: absolute;
+    }
+  }
+}

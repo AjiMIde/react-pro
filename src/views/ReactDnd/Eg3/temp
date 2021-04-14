@@ -1,0 +1,31 @@
+
+
+## 重新修改的 useEffect 的 resizeObserves
+
+```js
+    if (!window.rooms) window.rooms = {}
+    if (!window.rooms['roomId' + roomId]) window.rooms['roomId' + roomId] = []
+    window.rooms['roomId' + roomId].push(ref.current)
+    console.error('eeeffff')
+    const fun = DropUtils.setDebounce('', (evts) => {
+      console.log('fun debounce resize', index)
+      let h = evts[0].target.getBoundingClientRect().height
+      h = Math.round(h)
+      if (style.height !== h) {
+        onRoomResize(index, h)
+      }
+    })
+
+    let observerObj = {}
+    if (!DropUtils.resizeObservers['room' + index]) {
+      observerObj = DropUtils.resizeObservers['room' + index] = {}
+    } else {
+      observerObj = DropUtils.resizeObservers['room' + index]
+      observerObj.resizeObserver.unobserve(observerObj.current)
+    }
+
+    observerObj.current = ref.current
+    observerObj.resizeObserver = new window.ResizeObserver(fun)
+    observerObj.resizeObserver.observe(observerObj.current)
+
+```
