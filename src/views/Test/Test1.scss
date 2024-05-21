@@ -1,0 +1,15 @@
+.test-flex-overflow {
+  width: 500px;
+  background-color: #0c909c;
+  display: flex;
+  .a, .c {
+    width: 100px;
+    text-align: center;
+  }
+  .b {
+    flex: 1;
+    border: 1px solid #ccc;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}

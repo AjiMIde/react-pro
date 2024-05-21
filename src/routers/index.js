@@ -36,18 +36,27 @@ const Basic = [
   }
 ]
 
+const Hooks = [
+  {
+    path: 'hooks',
+    name: 'hooks',
+    txt: 'Hooks',
+    comp: loadable(() => import(/*webpackChunkName: "hooks"*/'@views/Hooks/Hooks'))
+  },
+  {
+    path: 'use-state',
+    name: 'useState',
+    txt: 'useState',
+    comp: loadable(() => import(/*webpackChunkName: "hooks"*/'@views/Hooks/useState/useState1'))
+  }
+]
+
 const Advanced = [
   {
     path: 'router-usage',
     txt: 'Router',
     name: 'routerUsage',
     comp: loadable(() => import(/*webpackChunkName: "routerUsage"*/'@views/RouterUsage/RouterUsage'))
-  },
-  {
-    path: 'hooks',
-    name: 'hooks',
-    txt: 'Hooks',
-    comp: loadable(() => import(/*webpackChunkName: "hooks"*/'@views/Hooks/Hooks'))
   },
   {
     path: 'comp-desc',
@@ -60,7 +69,16 @@ const Advanced = [
     txt: 'react-lazy',
     comp: loadable(() => import(/*webpackChunkName: "reactLazy"*/'@views/ComponentDesc/ReactLazy/father'))
   },
-
+  {
+    path: 'redux',
+    txt: 'redux',
+    comp: loadable(() => import(/*webpackChunkName: "redux"*/'@views/Redux/Father'))
+  },
+  {
+    path: 'context',
+    txt: 'Context & Provider',
+    comp: loadable(() => import(/*webpackChunkName: "context"*/'@views/Advanced/Context'))
+  }
 ]
 
 const Example = [
@@ -68,6 +86,11 @@ const Example = [
     path: 'react-dnd-ex',
     txt: 'react dnd',
     comp: loadable(() => import(/*webpackChunkName: "react-dnd"*/'@views/ReactDnd/Dnd.js'))
+  },
+  {
+    path: 'braft-editor',
+    txt: 'braft editor',
+    comp: loadable(() => import(/*webpackChunkName: "react-dnd"*/'@views/Examples/BraftEditor.js'))
   },
 ]
 
@@ -89,10 +112,16 @@ const Test = [
     txt: 'test3',
     name: 'test3',
     comp: loadable(() => import(/*webpackChunkName: "test3"*/'@views/Test/Test3'))
+  },
+  {
+    path: 'test4',
+    txt: 'test4',
+    name: 'test4',
+    comp: loadable(() => import(/*webpackChunkName: "test3"*/'@views/Test/Test4'))
   }
 ]
 
-const array = [].concat(Basic).concat(Advanced).concat(Test).concat(arrayRouter).concat(Example)
+const array = [].concat(Basic).concat(Hooks).concat(Advanced).concat(Test).concat(arrayRouter).concat(Example)
 
 // export {
 //   array as Routers
@@ -125,6 +154,7 @@ export default function R () {
 export {
   Basic,
   Advanced,
+  Hooks,
   Test,
   Example
 }

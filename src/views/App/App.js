@@ -2,6 +2,7 @@ import './App.scss';
 import Router from '../../routers'
 import Declare from "@views/_Declare";
 import _ from 'lodash'
+import Test1 from "@views/Test/Test1";
 
 setTimeout(() => {
   // 开始
@@ -14,11 +15,9 @@ setTimeout(() => {
 
 
 function App() {
-
-
   return (
     <div className="App">
-      <div className={'aji-test'} style={{width: 4, height: 4, background: 'red', position: 'absolute', left: 4, top: 4}}></div>
+      <div className={'aji-test'} style={{width: 4, height: 4, background: 'red', position: 'absolute', left: 4, top: 4}}> </div>
       <div className="app-left">
         <Declare/>
       </div>
@@ -27,8 +26,6 @@ function App() {
           <Router/>
         </div>
       </div>
-
-
     </div>
   );
 }

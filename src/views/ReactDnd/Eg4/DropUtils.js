@@ -81,7 +81,7 @@ export default {
     const { scrollTop, scrollLeft } = window.document.documentElement
     const pad = 3 // 我也不知道
     const left = Math.round(pointX - fatherX + scrollLeft + pad)
-    const top = Math.round(pointY - fatherY + scrollTop - pad)
+    const top = Math.round(pointY - fatherY + 0 - pad)      // 这一步是要加 scrollTop 有点混乱
 
     console.log(pointX, pointY, fatherX, fatherY, left, top)
 

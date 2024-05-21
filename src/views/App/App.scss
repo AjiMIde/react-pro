@@ -1,6 +1,6 @@
-@import "../../../node_modules/bee-mui/styles/bee.reset";
-@import "../../../node_modules/bee-mui/styles/bee.tool";
-@import "../../../node_modules/bee-mui/styles/bee.markdown";
+//@import "../../../node_modules/bee-mui/styles/bee.reset";
+//@import "../../../node_modules/bee-mui/styles/bee.tool";
+//@import "../../../node_modules/bee-mui/styles/bee.markdown";
 
 body {
   margin: 0;
@@ -26,7 +26,9 @@ html, body, #root, .App {
     width: 200px;
   }
   .app-center {
+    height: 100%;
     flex: 1;
+    overflow: auto;
   }
 }
 .App-router-container {
@@ -54,4 +56,24 @@ code {
   margin: 10px;
 }
 
+.left-menus {
+  h4 {
+    margin: 10px 0;
+  }
+  .son-block {
+    padding: 0 20px;
+  }
+}
 
+.rp-block {
+  border: 1px dotted #999;
+  padding: 10px;
+  margin: 10px;
+  h1 {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .content {
+    padding: 10px;
+  }
+}

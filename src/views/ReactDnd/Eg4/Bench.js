@@ -1,51 +1,62 @@
 import React, { memo, useCallback, useState, useEffect, useRef } from 'react'
 import { useDrop, useDrag } from 'react-dnd'
 import Snack from './Snack'
-import Types from '../datas/Types'
+import Desk from './Desk'
+import Types, { Camps } from '../datas/Types'
 
-const type = 'bench'
+const Bench = memo((props) => {
+  const { index = '0', moveCard, item = {} } = props
+  const { snacks, desks } = item
 
-const Bench = memo(({ index = '0', id = '0', moveCard, snacks = [] }) => {
   const ref = useRef(null)
 
   const [{ handlerId }, drop] = useDrop({
-    accept: type,
+    accept: Types.BENCH,
+
     collect(monitor) {
       return {
         handlerId: monitor.getHandlerId(),
       };
     },
-    hover(item, monitor) {
+
+    hover: function (item, monitor) {
       if (!ref.current) {
         return;
       }
       const dragIndex = item.index;
       const hoverIndex = index;
-      console.log(dragIndex, hoverIndex)
-      // Don't replace items with themselves
+      // console.log(dragIndex, hoverIndex)
+
       if (dragIndex === hoverIndex) {
         return;
       }
       // Determine rectangle on screen
       const hoverBoundingRect = ref.current?.getBoundingClientRect();
+
       // Get vertical middle
       const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
+
       // Determine mouse position
       const clientOffset = monitor.getClientOffset();
       // Get pixels to the top
       const hoverClientY = clientOffset.y - hoverBoundingRect.top;
+
       // Only perform the move when the mouse has crossed half of the items height
       // When dragging downwards, only move when the cursor is below 50%
       // When dragging upwards, only move when the cursor is above 50%
+
       // Dragging downwards
+      // 从上往下拖动，指针未超过 hover source (ref.current) 的中间位置时，return
       if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
         return;
       }
       // Dragging upwards
+      // 从上往上拖动，指针仍大于 hover source (ref.current) 的中间位置时，return
       if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
         return;
       }
-      // Time to actually perform the action
+
+      // 其余情况 moveCard
       moveCard(dragIndex, hoverIndex);
       // Note: we're mutating the monitor item here!
       // Generally it's better to avoid mutations,
@@ -53,10 +64,11 @@ const Bench = memo(({ index = '0', id = '0', moveCard, snacks = [] }) => {
       // to avoid expensive index searches.
       item.index = hoverIndex;
     },
+
   });
 
   const [{ isDragging }, drag] = useDrag({
-    type: type,
+    type: Types.BENCH,
     item: () => {
       return { index };
     },
@@ -65,16 +77,33 @@ const Bench = memo(({ index = '0', id = '0', moveCard, snacks = [] }) => {
     }),
   });
 
+  useEffect(() => {
+    // console.log('bench re render ' + index)
+  })
+
   drag(drop(ref))
 
-  let style = isDragging ? { opacity: 0.5 } : { opacity: 1 }
+  let style = isDragging ? { opacity: 0.1 } : { opacity: 1 }
 
   return (<div className="bench" ref={ref} data-handler-id={handlerId} style={style}>
-    {index + '-'}
+    <div className={'bench-desc'}>{'工作台-' + (isDragging ? 'ddd' : '') + item.id}</div>
     {
-      snacks.map(o => (
-        <Snack>{o}</Snack>
-      ))
+      snacks && snacks.map((o, i) => {
+        const prop = {
+          content: o,
+          style: { position: 'relative' },
+        }
+        return ( <Snack prop={prop} key={i} campIndexes={''}/> )
+      })
+    }
+    {
+      desks && desks.map((o, i) => {
+        const prop = {
+          style: { width: 50, height: 50, position: 'relative' },
+          items: []
+        }
+        return ( <Desk key={i} prop={prop} campIndexes={''}/>)
+      })
     }
   </div>)
 })

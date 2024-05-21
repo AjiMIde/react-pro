@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState, useRef, memo } from 'react'
 import update from 'immutability-helper'
-import DropUtils from "@views/ReactDnd/Eg3/DropUtils";
+import DropUtils from "@views/ReactDnd/Eg4/DropUtils";
 
 const Comp = memo((props) => {
     const { name, age } = props

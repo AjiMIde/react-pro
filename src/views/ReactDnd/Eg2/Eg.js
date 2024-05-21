@@ -6,17 +6,15 @@ import Snack from './Snack'
 import Desk from './Desk'
 import './Dnd.scss'
 
-const Eg1 = memo(() => {
+const Eg = memo(() => {
 
   return (<div className={'eg1'}>
-    <div className="kitchen">
-      <h4>厨房</h4>
-      <div className="bench">
-        <Snack>花生</Snack>
-        <Snack>黄瓜</Snack>
-        <Snack>海带丝</Snack>
-      </div>
-    </div>
+    {/*<div className="kitchen">*/}
+    {/*  <h4>厨房</h4>*/}
+    {/*  <div className="bench">*/}
+    {/*    <Snack>花生</Snack>*/}
+    {/*  </div>*/}
+    {/*</div>*/}
 
 
     <div className={'desk'}>
@@ -33,7 +31,7 @@ function Wrapper() {
   return (
     <div className={'eg1'}>
       <DndProvider backend={HTML5Backend}>
-        <Eg1/>
+        <Eg/>
       </DndProvider>
     </div>
   )
