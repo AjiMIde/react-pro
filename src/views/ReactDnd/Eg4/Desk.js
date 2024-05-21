@@ -4,7 +4,6 @@ import { HTML5Backend } from 'react-dnd-html5-backend'
 import Types, { Camps } from "@views/ReactDnd/datas/Types";
 import IhUpdate from 'immutability-helper'
 import Snack from "@views/ReactDnd/Eg4/Snack";
-import update from "_immutability-helper@3.1.1@immutability-helper";
 import DropUtils from "@views/ReactDnd/Eg4/DropUtils";
 import _ from 'lodash'
 
